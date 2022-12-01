@@ -16,7 +16,6 @@ describe('CaloriesCounter tests', () => {
 9000
 
 10000`;
-
   const problemElvesItemsCalories = `2494
 8013
 1055
@@ -2269,13 +2268,23 @@ describe('CaloriesCounter tests', () => {
 1311
 1121`;
 
-  it('should return the number of calories carried by the Elf carrying the most calories', () => {
-    const caloriesCounter = new CaloriesCounter(exampleElvesItemsCalories);
-    expect(caloriesCounter.countCalories()).toBe(24000);
+  const exampleCaloriesCounter = new CaloriesCounter(exampleElvesItemsCalories);
+  const problemCaloriesCounter = new CaloriesCounter(problemElvesItemsCalories)
+
+
+  it('should return 24000 as a top one calories count from example elves list', () => {
+    expect(exampleCaloriesCounter.getTopOneCaloriesCount()).toBe(24000);
   });
 
-  it('should return 70369 as a max calories at the problem elves list', () => {
-    const problemCaloriesCounter = new CaloriesCounter(problemElvesItemsCalories)
-    expect(problemCaloriesCounter.countCalories()).toBe(70369);
+  it('should return 70369 as a top one calories count from the problem elves list', () => {
+    expect(problemCaloriesCounter.getTopOneCaloriesCount()).toBe(70369);
   })
+
+  it('should return 45000 as a top three calories count from example elves list', () => {
+    expect(exampleCaloriesCounter.getTopThreeCaloriesCount()).toBe(45000);
+  });
+
+  it('should return 203002 as a top three calories count from example elves list', () => {
+    expect(problemCaloriesCounter.getTopThreeCaloriesCount()).toBe(203002);
+  });
 });

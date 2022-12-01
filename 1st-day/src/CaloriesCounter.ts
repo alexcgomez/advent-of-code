@@ -1,9 +1,25 @@
 export class CaloriesCounter {
+
+  private readonly totalCaloriesByElfAscendingOrder: number[];
   constructor(private elvesItemsCalories: string) {
+    this.totalCaloriesByElfAscendingOrder = this.getTotalCaloriesByElf();
   }
 
-  public countCalories(): number {
+  public getTopOneCaloriesCount(): number {
+    return Math.max(...this.totalCaloriesByElfAscendingOrder);
+  }
 
+  public getTopThreeCaloriesCount(): number {
+    let topThreeCaloriesCount = 0;
+
+    for (let i = 0; i < 3; i++) {
+      topThreeCaloriesCount += this.totalCaloriesByElfAscendingOrder[i];
+    }
+
+    return topThreeCaloriesCount;
+  }
+
+  private getTotalCaloriesByElf(): number[] {
     const elvesCaloriesByItem: string[] = this.elvesItemsCalories.split('\n');
 
     let totalCaloriesByElf: number[] = [];
@@ -11,7 +27,7 @@ export class CaloriesCounter {
 
     elvesCaloriesByItem.forEach((item, index, array) => {
 
-      if(index === array.length - 1) {
+      if (index === array.length - 1) {
         caloriesCounter += Number(item);
         totalCaloriesByElf.push(caloriesCounter);
       }
@@ -22,8 +38,7 @@ export class CaloriesCounter {
       } else {
         caloriesCounter += Number(item);
       }
-    })
-
-    return Math.max(...totalCaloriesByElf);
+    });
+    return totalCaloriesByElf.sort((a, b) => b - a);
   }
 }

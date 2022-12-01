@@ -3,7 +3,27 @@ export class CaloriesCounter {
   }
 
   public countCalories(): number {
-    console.log(this.elvesItemsCalories.split(' ').map(el => el.trim()));
-    return 0;
+
+    const elvesCaloriesByItem: string[] = this.elvesItemsCalories.split('\n');
+
+    let totalCaloriesByElf: number[] = [];
+    let caloriesCounter = 0;
+
+    elvesCaloriesByItem.forEach((item, index, array) => {
+
+      if(index === array.length - 1) {
+        caloriesCounter += Number(item);
+        totalCaloriesByElf.push(caloriesCounter);
+      }
+
+      if (item === '') {
+        totalCaloriesByElf.push(caloriesCounter);
+        caloriesCounter = 0;
+      } else {
+        caloriesCounter += Number(item);
+      }
+    })
+
+    return Math.max(...totalCaloriesByElf);
   }
 }

@@ -1,4 +1,4 @@
-import { CaloriesCounter } from '../src/CaloriesCounter';
+import { CaloriesCounter } from '../../src/1st-day/CaloriesCounter';
 
 describe('CaloriesCounter tests', () => {
 

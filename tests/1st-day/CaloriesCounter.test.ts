@@ -4,7 +4,7 @@ import { exampleElvesItemsCalories, problemElvesItemsCalories } from '../fixture
 describe('CaloriesCounter tests', () => {
 
   const exampleCaloriesCounter = new CaloriesCounter(exampleElvesItemsCalories);
-  const problemCaloriesCounter = new CaloriesCounter(problemElvesItemsCalories)
+  const problemCaloriesCounter = new CaloriesCounter(problemElvesItemsCalories);
 
 
   it('should return 24000 as a top one calories count from example elves list', () => {

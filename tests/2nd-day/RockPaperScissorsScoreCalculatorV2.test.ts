@@ -1,12 +1,10 @@
-import { RockPaperScissorsScoreCalculator } from '../../src/2nd-day/RockPaperScissorsScoreCalculator';
 import { examplePlayResults, problemPlayResults } from '../fixtures/2ndDayExamplePlayResults';
 import { RockPaperScissorsScoreCalculatorV2 } from '../../src/2nd-day/RockPaperScissorsScoreCalculatorV2';
 
 describe('RockPaperScissorsScoreCalculatorV2 tests', () => {
 
   const exampleScoreCalculator = new RockPaperScissorsScoreCalculatorV2(examplePlayResults);
-  const problemScoreCalculator = new RockPaperScissorsScoreCalculatorV2(problemPlayResults)
-
+  const problemScoreCalculator = new RockPaperScissorsScoreCalculatorV2(problemPlayResults);
 
   it('should return score of 4 at the first round of the example play', () => {
     const result = exampleScoreCalculator.getRoundScore(0);

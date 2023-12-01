@@ -1,5 +1,4 @@
 export class CaloriesCounter {
-
   private readonly totalCaloriesByElfAscendingOrder: number[];
   constructor(private elvesItemsCalories: string) {
     this.totalCaloriesByElfAscendingOrder = this.getTotalCaloriesByElf();
@@ -22,11 +21,10 @@ export class CaloriesCounter {
   private getTotalCaloriesByElf(): number[] {
     const elvesCaloriesByItem: string[] = this.elvesItemsCalories.split('\n');
 
-    let totalCaloriesByElf: number[] = [];
+    const totalCaloriesByElf: number[] = [];
     let caloriesCounter = 0;
 
     elvesCaloriesByItem.forEach((item, index, array) => {
-
       if (index === array.length - 1) {
         caloriesCounter += Number(item);
         totalCaloriesByElf.push(caloriesCounter);

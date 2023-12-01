@@ -1,8 +1,58 @@
-import * as string_decoder from 'string_decoder';
-
 export class RucksackItemsCounter {
-
-  private readonly characters: string[] = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' ];
+  private readonly characters: string[] = [
+    'a',
+    'b',
+    'c',
+    'd',
+    'e',
+    'f',
+    'g',
+    'h',
+    'i',
+    'j',
+    'k',
+    'l',
+    'm',
+    'n',
+    'o',
+    'p',
+    'q',
+    'r',
+    's',
+    't',
+    'u',
+    'v',
+    'w',
+    'x',
+    'y',
+    'z',
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K',
+    'L',
+    'M',
+    'N',
+    'O',
+    'P',
+    'Q',
+    'R',
+    'S',
+    'T',
+    'U',
+    'V',
+    'W',
+    'X',
+    'Y',
+    'Z',
+  ];
 
   private readonly rucksackList: string[];
 
@@ -14,7 +64,7 @@ export class RucksackItemsCounter {
     const rucksack = this.rucksackList[rucksackIndex].split('');
     const middleIndex = Math.floor(rucksack.length / 2);
     const firstCompartment = rucksack.splice(0, middleIndex);
-    return rucksack.find(item => firstCompartment.some(i => i === item));
+    return rucksack.find((item) => firstCompartment.some((i) => i === item));
   }
 
   public calculatePrioritySum(): number {
@@ -33,31 +83,31 @@ export class RucksackItemsCounter {
     let counter: number = 0;
     let groupedRucksacksIndex: number = 0;
 
-    this.rucksackList.forEach(rucksack => {
+    this.rucksackList.forEach((rucksack) => {
       if (counter == 3) {
         counter = 0;
         groupedRucksacksIndex += 1;
-        groupedRucksacks.push([])
+        groupedRucksacks.push([]);
       }
       counter++;
       groupedRucksacks[groupedRucksacksIndex].push(rucksack);
-    })
+    });
 
     return groupedRucksacks;
   }
 
   public getGroupedPriority(groupIndex: number): number {
     let foundItemPriority: number = 0;
-    const splittedGroups: string[][] = this.getGroupedRucksacks()[groupIndex].map(e => e.split(''));
+    const splittedGroups: string[][] = this.getGroupedRucksacks()[groupIndex].map((e) => e.split(''));
 
-    splittedGroups[0].forEach(item => {
-      const foundInSecondGroup = !!splittedGroups[1].find(i=> i===item);
-      const foundInThirdGroup = !!splittedGroups[2].find(i=> i===item);
+    splittedGroups[0].forEach((item) => {
+      const foundInSecondGroup = !!splittedGroups[1].find((i) => i === item);
+      const foundInThirdGroup = !!splittedGroups[2].find((i) => i === item);
 
       if (foundInSecondGroup && foundInThirdGroup) {
         foundItemPriority = this.getItemPriority(item);
       }
-    })
+    });
 
     return foundItemPriority;
   }
@@ -72,12 +122,11 @@ export class RucksackItemsCounter {
 
     groups.forEach((_, index) => {
       totalGroupPriority += this.getGroupedPriority(index);
-    })
+    });
     return totalGroupPriority;
   }
 
   private parseRucksackInput(rucksackListInput: string): string[] {
     return rucksackListInput.split('\n');
   }
-
 }

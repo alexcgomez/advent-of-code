@@ -1,8 +1,7 @@
-import { RucksackItemsCounter } from '../../src/3rd-day/RucksackItemsCounter';
 import { exampleInput, problemInput } from '../fixtures/3ndDayInput';
+import { RucksackItemsCounter } from '../../../src/2022/3rd-day/RucksackItemsCounter';
 
 describe('RucksackItemsCounter tests', () => {
-
   const exampleRucksackItemsCounter = new RucksackItemsCounter(exampleInput);
   const problemRucksackItemsCounter = new RucksackItemsCounter(problemInput);
 
@@ -39,10 +38,16 @@ describe('RucksackItemsCounter tests', () => {
   });
 
   it('should form groups for each set of 3 rucksacks', () => {
-    expect(exampleRucksackItemsCounter.getGroupedRucksacks()[0])
-      .toStrictEqual([ 'vJrwpWtwJgWrhcsFMMfFFhFp', 'jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL', 'PmmdzqPrVvPwwTWBwg' ]);
-    expect(exampleRucksackItemsCounter.getGroupedRucksacks()[1])
-      .toStrictEqual([ 'wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn', 'ttgJtRGJQctTZtZT', 'CrZsJsPPZsGzwwsLwLmpwMDw' ]);
+    expect(exampleRucksackItemsCounter.getGroupedRucksacks()[0]).toStrictEqual([
+      'vJrwpWtwJgWrhcsFMMfFFhFp',
+      'jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL',
+      'PmmdzqPrVvPwwTWBwg',
+    ]);
+    expect(exampleRucksackItemsCounter.getGroupedRucksacks()[1]).toStrictEqual([
+      'wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn',
+      'ttgJtRGJQctTZtZT',
+      'CrZsJsPPZsGzwwsLwLmpwMDw',
+    ]);
   });
 
   it('should return 18 as a priority of first example group', () => {

@@ -1,11 +1,10 @@
 enum MyHandScore {
   X = 1,
   Y = 2,
-  Z = 3
+  Z = 3,
 }
 
 export class RockPaperScissorsScoreCalculator {
-
   private readonly playResults: string[][] = [];
 
   constructor(playResults: string) {
@@ -13,7 +12,6 @@ export class RockPaperScissorsScoreCalculator {
   }
 
   public getRoundScore(round: number): number {
-
     const opponentHand = this.playResults[round][0];
     const myHand = this.playResults[round][1];
 
@@ -59,7 +57,7 @@ export class RockPaperScissorsScoreCalculator {
   }
 
   public getTotalRoundsScore(): number {
-    let totalRoundsScore: number= 0;
+    let totalRoundsScore: number = 0;
 
     for (let i = 0; i < this.playResults.length; i++) {
       totalRoundsScore += this.getRoundScore(i);
@@ -69,6 +67,9 @@ export class RockPaperScissorsScoreCalculator {
   }
 
   private parsePlayResults(playResults: string) {
-    return playResults.trim().split('\n').map(el => el.split(' '));
+    return playResults
+      .trim()
+      .split('\n')
+      .map((el) => el.split(' '));
   }
 }

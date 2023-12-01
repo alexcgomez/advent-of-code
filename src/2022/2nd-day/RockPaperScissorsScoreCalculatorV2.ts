@@ -1,21 +1,28 @@
 enum Result {
-  Lose = 'X', Draw = 'Y', Win = 'Z'
+  Lose = 'X',
+  Draw = 'Y',
+  Win = 'Z',
 }
 
 enum ResultScore {
-  'X' = 0, 'Y' = 3, 'Z' = 6
+  'X' = 0,
+  'Y' = 3,
+  'Z' = 6,
 }
 
 enum Hand {
-  Rock = 'A', Paper = 'B', Scissors = 'C',
+  Rock = 'A',
+  Paper = 'B',
+  Scissors = 'C',
 }
 
 enum HandScore {
-  'A' = 1, 'B' = 2, 'C' = 3,
+  'A' = 1,
+  'B' = 2,
+  'C' = 3,
 }
 
 export class RockPaperScissorsScoreCalculatorV2 {
-
   private readonly playResults: string[][] = [];
 
   constructor(playResults: string) {
@@ -23,7 +30,6 @@ export class RockPaperScissorsScoreCalculatorV2 {
   }
 
   public getRoundScore(round: number): number {
-
     const opponentHand = this.playResults[round][0];
     const expectedRoundResult = this.playResults[round][1];
 
@@ -66,7 +72,7 @@ export class RockPaperScissorsScoreCalculatorV2 {
       myHand = Hand.Rock;
     }
 
-    roundResult = ResultScore[expectedRoundResult as keyof typeof ResultScore]
+    roundResult = ResultScore[expectedRoundResult as keyof typeof ResultScore];
 
     return roundResult + HandScore[myHand as keyof typeof HandScore];
   }
@@ -82,6 +88,9 @@ export class RockPaperScissorsScoreCalculatorV2 {
   }
 
   private parsePlayResults(playResults: string) {
-    return playResults.trim().split('\n').map(el => el.split(' '));
+    return playResults
+      .trim()
+      .split('\n')
+      .map((el) => el.split(' '));
   }
 }

@@ -1,8 +1,7 @@
 import { examplePlayResults, problemPlayResults } from '../fixtures/2ndDayExamplePlayResults';
-import { RockPaperScissorsScoreCalculatorV2 } from '../../src/2nd-day/RockPaperScissorsScoreCalculatorV2';
+import { RockPaperScissorsScoreCalculatorV2 } from '../../../src/2022/2nd-day/RockPaperScissorsScoreCalculatorV2';
 
 describe('RockPaperScissorsScoreCalculatorV2 tests', () => {
-
   const exampleScoreCalculator = new RockPaperScissorsScoreCalculatorV2(examplePlayResults);
   const problemScoreCalculator = new RockPaperScissorsScoreCalculatorV2(problemPlayResults);
 
@@ -30,5 +29,4 @@ describe('RockPaperScissorsScoreCalculatorV2 tests', () => {
     const result = problemScoreCalculator.getTotalRoundsScore();
     expect(result).toBe(12881);
   });
-
 });

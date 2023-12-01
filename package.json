@@ -9,8 +9,7 @@
     "test:2022": "jest --testPathPattern=2022",
     "test-watch": "jest --watch"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Alex Cáceres",
   "license": "ISC",
   "devDependencies": {
     "@types/jest": "^29.5.10",

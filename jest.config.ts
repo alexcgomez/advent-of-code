@@ -9,7 +9,7 @@ const config: Config = {
   rootDir: '.',
   testEnvironment: 'node',
   clearMocks: true,
-  collectCoverage: true,
+  collectCoverage: false,
   coverageDirectory: 'coverage',
   coverageProvider: 'v8',
   modulePathIgnorePatterns: ['<rootDir>/dist/', '<rootDir>/node_modules/'],

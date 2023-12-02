@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
+    "test": "jest",
     "test:2023": "jest --testPathPattern=2023",
     "test:2022": "jest --testPathPattern=2022",
     "test-watch": "jest --watch"

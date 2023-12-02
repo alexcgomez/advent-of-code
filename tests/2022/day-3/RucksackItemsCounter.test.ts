@@ -1,5 +1,5 @@
-import { exampleInput, problemInput } from '../fixtures/3ndDayInput';
-import { RucksackItemsCounter } from '../../../src/2022/3rd-day/RucksackItemsCounter';
+import { RucksackItemsCounter } from '../../../src/2022/day-3/RucksackItemsCounter';
+import { exampleInput, problemInput } from '../fixtures/Day3Input';
 
 describe('RucksackItemsCounter tests', () => {
   const exampleRucksackItemsCounter = new RucksackItemsCounter(exampleInput);

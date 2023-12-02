@@ -1,5 +1,5 @@
-import { examplePlayResults, problemPlayResults } from '../fixtures/2ndDayExamplePlayResults';
-import { RockPaperScissorsScoreCalculator } from '../../../src/2022/2nd-day/RockPaperScissorsScoreCalculator';
+import { RockPaperScissorsScoreCalculator } from '../../../src/2022/day-2/RockPaperScissorsScoreCalculator';
+import { examplePlayResults, problemPlayResults } from '../fixtures/Day2ExamplePlayResults';
 
 describe('RockPaperScissorsScoreCalculator tests', () => {
   const exampleScoreCalculator = new RockPaperScissorsScoreCalculator(examplePlayResults);

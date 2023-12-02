@@ -1,5 +1,5 @@
-import { exampleElvesItemsCalories, problemElvesItemsCalories } from '../fixtures/1stDayProblemElvesItemCalories';
-import { CaloriesCounter } from '../../../src/2022/1st-day/CaloriesCounter';
+import { CaloriesCounter } from '../../../src/2022/day-1/CaloriesCounter';
+import { exampleElvesItemsCalories, problemElvesItemsCalories } from '../fixtures/Day1ProblemElvesItemCalories';
 
 describe('CaloriesCounter tests', () => {
   const exampleCaloriesCounter = new CaloriesCounter(exampleElvesItemsCalories);

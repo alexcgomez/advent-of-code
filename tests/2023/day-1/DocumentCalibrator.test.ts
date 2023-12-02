@@ -1,9 +1,9 @@
-import { DocumentCalibrator } from '../../../src/2023/1st-day/DocumentCalibrator';
+import { DocumentCalibrator } from '../../../src/2023/day-1/DocumentCalibrator';
 import {
   exampleDocumentCalibratorInput,
   problemDocumentCalibratorInput,
   secondExampleDocumentCalibratorInput,
-} from '../fixtures/1stDayDocumentCalibrator';
+} from '../fixtures/Day1Input';
 
 describe('DocumentCalibrator', () => {
   const exampleDocumentCalibrator = new DocumentCalibrator(exampleDocumentCalibratorInput);

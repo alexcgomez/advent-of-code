@@ -1,81 +1,71 @@
-export class DocumentCalibrator {
-  constructor(private readonly document: string) {}
+interface GameSet {
+  cubes: Cube;
+}
 
-  calibrate(lineNumber: number): number {
-    const line: string = this.document.split('\n')[lineNumber];
-    const lineCharacters = line.split('');
+interface Cube {
+  red: number;
+  green: number;
+  blue: number;
+}
 
-    const firstDigit = String(lineCharacters.find(Number));
-    const lastDigit = String(lineCharacters.reverse().find(Number));
+interface Game {
+  id: number;
+  sets: GameSet[];
+}
 
-    return Number(firstDigit + lastDigit);
+interface GameInputSetup {
+  gamesString: string;
+  cubeSetup: Cube;
+}
+
+export class GameValidator {
+  private games: Game[];
+  private cubes: Cube;
+
+  public initialSetup(gameSetup: GameInputSetup) {
+    this.games = this.getGames(gameSetup.gamesString);
+    this.cubes = gameSetup.cubeSetup;
   }
 
-  addCalibrationValues(): number {
-    let totalCalibrationValues: number = 0;
-    const documentLines = this.document.split('\n');
+  public addPossibleGames(): number {
+    let addedPossibleGamesIds = 0;
 
-    documentLines.forEach((_, index) => {
-      totalCalibrationValues += this.calibrate(index);
-    });
-
-    return totalCalibrationValues;
-  }
-
-  calibrateWithLetters(lineNumber: number): number {
-    const StringNumbers: Record<string, string> = {
-      1: '1',
-      2: '2',
-      3: '3',
-      4: '4',
-      5: '5',
-      6: '6',
-      7: '7',
-      8: '8',
-      9: '9',
-      one: '1',
-      two: '2',
-      three: '3',
-      four: '4',
-      five: '5',
-      six: '6',
-      seven: '7',
-      eight: '8',
-      nine: '9',
-    };
-    const line: string = this.document.split('\n')[lineNumber];
-
-    let firstDigitIndex: number = line.length;
-    let lastDigitIndex: number = 0;
-
-    let firstDigit: string;
-    let lastDigit: string;
-
-    Object.keys(StringNumbers).forEach((key) => {
-      if (line.includes(key)) {
-        if (line.indexOf(key) < firstDigitIndex) {
-          firstDigitIndex = line.indexOf(key);
-          firstDigit = StringNumbers[key];
-        }
-
-        if (line.lastIndexOf(key) >= lastDigitIndex) {
-          lastDigitIndex = line.lastIndexOf(key);
-          lastDigit = StringNumbers[key];
-        }
+    this.games.forEach((game) => {
+      if (this.isImpossibleGame(game)) {
+        return;
       }
+      addedPossibleGamesIds += game.id;
     });
 
-    return Number(firstDigit + lastDigit);
+    return addedPossibleGamesIds;
   }
 
-  addCalibrationValuesWithLetters(): number {
-    let totalCalibrationValues: number = 0;
-    const documentLines = this.document.split('\n');
+  private getGames(gamesString: string): Game[] {
+    const games: Game[] = [];
+    gamesString.split('\n').forEach((gameString) => {
+      const gameId = +gameString[gameString.indexOf(':') - 1];
+      const gameSets: GameSet[] = gameString
+        .split(':')[1]
+        .split(';')
+        .map((gameSetString) => {
+          return {
+            cubes: {
+              red: gameSetString.includes('red') ? +gameSetString[gameSetString.indexOf('red') - 3] : 0,
+              blue: gameSetString.includes('blue') ? +gameSetString[gameSetString.indexOf('blue') - 3] : 0,
+              green: gameSetString.includes('green') ? +gameSetString[gameSetString.indexOf('green') - 3] : 0,
+            },
+          };
+        });
 
-    documentLines.forEach((_, index) => {
-      totalCalibrationValues += this.calibrateWithLetters(index);
+      games.push({ id: gameId, sets: gameSets });
     });
 
-    return totalCalibrationValues;
+    return games;
+  }
+
+  private isImpossibleGame(game: Game): boolean {
+    return game.sets.some((set) => {
+      return this.cubes.red < set.cubes.red || this.cubes.blue < set.cubes.blue || this.cubes.green < set.cubes.green;
+    });
   }
 }

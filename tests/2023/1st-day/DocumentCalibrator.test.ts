@@ -32,7 +32,7 @@ describe('DocumentCalibrator', () => {
     expect(exampleDocumentCalibrator.addCalibrationValues()).toBe(142);
   });
 
-  it('should return x for the sum of all the problem document calibration values', () => {
+  it('should return 54634 for the sum of all the problem document calibration values', () => {
     expect(problemDocumentCalibrator.addCalibrationValues()).toBe(54634);
   });
 
@@ -44,5 +44,41 @@ describe('DocumentCalibrator', () => {
 
   it('should return 83 on second example document line 2', () => {
     expect(secondExampleDocumentCalibrator.calibrateWithLetters(1)).toBe(83);
+  });
+
+  it('should return 13 on second example document line 3', () => {
+    expect(secondExampleDocumentCalibrator.calibrateWithLetters(2)).toBe(13);
+  });
+
+  it('should return 24 on second example document line 4', () => {
+    expect(secondExampleDocumentCalibrator.calibrateWithLetters(3)).toBe(24);
+  });
+
+  it('should return 42 on second example document line 5', () => {
+    expect(secondExampleDocumentCalibrator.calibrateWithLetters(4)).toBe(42);
+  });
+
+  it('should return 14 on second example document line 6', () => {
+    expect(secondExampleDocumentCalibrator.calibrateWithLetters(5)).toBe(14);
+  });
+
+  it('should return 76 on second example document line 7', () => {
+    expect(secondExampleDocumentCalibrator.calibrateWithLetters(6)).toBe(76);
+  });
+
+  it('should return 52 on second example document line 61', () => {
+    expect(problemDocumentCalibrator.calibrateWithLetters(61)).toBe(52);
+  });
+
+  it('should return 77 on second example document line 253', () => {
+    expect(problemDocumentCalibrator.calibrateWithLetters(253)).toBe(77);
+  });
+
+  it('should return 99 on second example document line 711', () => {
+    expect(problemDocumentCalibrator.calibrateWithLetters(711)).toBe(99);
+  });
+
+  it('should return x for the sum of all the problem document calibration values', () => {
+    expect(problemDocumentCalibrator.addCalibrationValuesWithLetters()).toBe(53855);
   });
 });
